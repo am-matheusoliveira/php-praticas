@@ -392,16 +392,19 @@ $array = [
     NÃO REMOVENDO AS FRAÇÕES
 
 */
-$json = json_encode($array, JSON_PRETTY_PRINT | 
-                            JSON_UNESCAPED_UNICODE |
-                            JSON_UNESCAPED_SLASHES |
-                            JSON_HEX_TAG | 
-                            JSON_HEX_QUOT | 
-                            JSON_HEX_AMP |
-                            JSON_HEX_APOS |
-                            JSON_FORCE_OBJECT |
-                            JSON_NUMERIC_CHECK |
-                            JSON_PRESERVE_ZERO_FRACTION);
+$json = json_encode(
+    $array,
+    JSON_PRETTY_PRINT |           // Formata o JSON com indentação (legível)
+    JSON_UNESCAPED_UNICODE |      // Mantém caracteres UTF-8 (ç, ã, á, é…) sem escapar
+    JSON_UNESCAPED_SLASHES |      // Não escapa barras "/" -> mantém URLs limpas
+    JSON_HEX_TAG |                // Converte "<" e ">" para códigos hexadecimais
+    JSON_HEX_QUOT |               // Converte aspas " para códigos hexadecimais
+    JSON_HEX_AMP |                // Converte "&" para hex (evita problemas HTML)
+    JSON_HEX_APOS |               // Converte aspas simples ' para hex
+    JSON_FORCE_OBJECT |           // Força arrays numéricos a virarem objetos {}
+    JSON_NUMERIC_CHECK |          // Converte strings numéricas em números reais
+    JSON_PRESERVE_ZERO_FRACTION   // Mantém ".0" nos números de ponto flutuante
+);
 
 // IMPRESSÃO
 echo('<pre>'); print_r($array); echo('</pre>');
