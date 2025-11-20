@@ -16,7 +16,7 @@ echo("Cédulas disponíveis: ".implode(', ', $cedulas)."\n");
 $valorSaque = readline('Digite o valor para saque: ');
 
 //VERIFICA O VALOR DO SAQUE
-if($valorSaque % $cedulas[0] > 0){
+if(($valorSaque % $cedulas[0]) > 0){
     die('O valor solicitado não pode ser atendido pelas cédulas disponíveis');
 }
 
