@@ -1,0 +1,147 @@
+
+Estudando regex: REGEX RESUMÃO DEFINITIVO (versão simples e prática)
+
+Tópicos: 01-Âncoras, 01-Conjuntos, 03-Quantificadore, 04-Metacaracteres, 05-Grupos,
+06-Classes especiais de caracteres, 07-Alternância,
+08-Limites importantes para URL (contexto Apache/Nginx)
+
+
+Tópico 01 - âncoras (definem onde a regex começa e termina)
+
+Âncora: ^
+Descrição: Esse define o início da string de uma expressão.
+Exemplo: ^painel -> Combina apenas se começar com "painel".
+
+Âncora: $
+Descrição: Esse define o fim da string de uma expressão.
+Exemplo: \.json$ -> Combina apenas se termina com "\.json".
+
+
+Tópico 02 - conjuntos (lista de caracteres permitidos)
+
+Conjunto: [a-z]
+Descrição: Letras minúsculas de a até z.
+Exemplo: ^[a-z]$ -> Usada para encontrar letras minúsculas em uma string.
+
+Conjunto: [A-Z]
+Descrição: Letras maiúsculas de A até Z.
+Exemplo: ^[A-Z]$ -> Usada para encontrar letras maiúsculas em uma string.
+
+Conjunto: [0-9]
+Descrição: Dígitos numéricos.
+Exemplo: ^[0-9]$ -> Usado para encontrar números em uma string.
+
+Conjunto: [a-z0-9]
+Descrição: Letras minúsculas + números
+Exemplo: ^[a-z0-9]$ -> Usado para encontrar números e letras em uma string.
+
+Conjunto 05: [^a-z]
+Descrição: Tudo EXCETO letras minúsculas.
+Exemplo: ^[^a-z]$ -> Usado para encontrar tudo EXCETO letras minúsculas em uma string.
+OBS: isso ^ dentro de [] significa negação
+
+
+Tópico 03 - quantificadores (quantas vezes pode aparecer)
+
+Quantificador: +
+Descrição: 1 ou mais.
+Exemplo: [a-z]+ → uma palavra.
+
+Quantificador: *
+Descrição: 0 ou mais.
+Exemplo: [0-9]* → pode não ter números.
+
+Quantificador: ?
+Descrição: 0 ou 1 (opcional).
+Exemplo: \/? → "/" opcional painel/? aceita /painel ou /painel/.
+
+Quantificador: {n}
+Descrição: exatamente n vezes.
+Exemplo: [0-9]{4} → quatro números.
+
+Quantificador: {n,}
+Descrição: n ou mais.
+Exemplo: [0-9]{2,} → dois dígitos ou mais.
+
+Quantificador: {n,m}
+Descrição: entre n e m vezes.
+Exemplo: [0-9]{2,5} → de 2 a 5 números.
+
+
+Tópico 04 - metacaracteres importantes
+
+Metacaractere: .
+Descrição: Qualquer caractere, exceto quebra de linha.
+Exemplo: .* = qualquer coisa, .+ = qualquer coisa, mas pelo menos 1 caractere
+
+Metacaractere: \
+Descrição: Faz escape de caracteres especiais.
+Exemplo: \. significa um ponto literal, \? significa o símbolo "?" literal
+
+
+Tópico 05 - grupos (captura e estrutura)
+
+Grupo: (...)
+Descrição: Captura o valor para reutilizar depois.
+Exemplo: ([a-z0-9]+) -> Captura uma palavra.
+
+Grupo: $1, $2, etc
+Descrição: Usam os valores capturados.
+Exemplo: .htaccess -> RewriteRule ^painel/([a-z0-9]+)/?$ admin.php?modulo=$1
+
+
+Tópico 06 - classes especiais de caracteres
+
+Classe: \d
+Descrição: Dígitos (0–9)
+Exemplo: 
+
+Classe: \w
+Descrição: Palavras (letras + números + _)
+Exemplo:
+
+Classe: \s
+Descrição: Espaços (espaço, tab, quebra de linha)
+Exemplo:
+
+Classe: \D, \W, \S
+Descrição: Negativos (não dígito, não palavra, não espaço)
+Exemplo:
+
+
+Tópico 07 - alternância (OU)
+
+Alternância: |
+Descrição: Lógico OU
+Exemplo: (jpg|png|gif)$ Termina com jpg OU png OU gif
+
+
+Tópico 08 - limites importantes para URL (contexto Apache/Nginx)
+
+Limite: ^...$
+Descrição: Sempre que você quer casar a URL inteira.
+Exemplo: 
+
+Limite: \/
+Descrição: Barra normal.
+Exemplo: 
+
+Limite: \.
+Descrição: Ponto literal (tipo .php, .json).
+Exemplo: 
+
+
+SUPER RESUMO (para lembrar sempre)
+
+    Regex é um padrão que busca texto.
+    Você combina:
+    âncoras + conjuntos + quantificadores + grupos.
+
+^ começo
+$ fim
+[a-z0-9] caracteres válidos
++ um ou mais
+() captura
+$1 usa o capturado
+
+Se você decorar isso, você destrava 90% do uso prático.
