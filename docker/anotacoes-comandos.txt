@@ -1,0 +1,35 @@
+
+Docker comandos e estudos.
+
+Comandos:
+
+Comando: docker stop $(docker ps -aq) 2>/dev/null
+Descrição: 01 Parar todos os containers
+
+Comando: docker rm $(docker ps -aq) 2>/dev/null
+Descrição: 02 Remover todos os containers
+
+Comando: docker system prune -a --volumes
+Descrição: 03 Limpar TUDO: imagens, redes, cache e volumes
+
+Comando: docker system prune -a --volumes -f
+Descrição: Se quiser sem perguntar "Are you sure?":
+
+Comando: docker container prune
+Descrição: Containers parados
+
+Comando: docker image prune -a
+Descrição: Imagens não usadas
+
+Comando: docker volume prune
+Descrição: Volumes não utilizados
+
+Comando: docker network prune
+Descrição: Redes não utilizadas
+
+Comando: docker builder prune
+Descrição: Cache de build
+
+Comando: docker system prune -a Tudo de uma vez (limpeza completa) — seguro
+Descrição: Apaga (containers parados, imagens sem uso, redes não usadas, cache),
+NÃO apaga volumes (dados persistentes), então é seguro.

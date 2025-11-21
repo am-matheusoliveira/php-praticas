@@ -1,0 +1,34 @@
+
+Linux memoria swap comandos e estudos.
+
+Comandos:
+
+Comando: sudo swapon --show
+Descrição: Verificar se já tem memoria swap alocada
+
+Criando e configurando uma memoria swap em uma pasta dedicada.
+
+Comando: sudo mkdir /var/swap
+Descrição: 01 - criar uma pasta dedicada para o SWAP.
+
+Comando: sudo fallocate -l 4G /var/swap/myswapfile
+Descrição: 02 - criar memoria swap de 4G dentro dessa pasta.
+
+Comando: sudo chmod 600 /var/swap/myswapfile
+Descrição: 03 - proteger o arquivo.
+
+Comando: sudo mkswap /var/swap/myswapfile
+Descrição: 04 - formatar como SWAP.
+
+Comando: sudo swapon /var/swap/myswapfile
+Descrição: 05 - ativar o swap imediatamente.
+
+Comando: sudo nano /etc/fstab
+Descrição: 06 - tornar a swap permanente,
+editar o arquivo /etc/fstab e incluir a linha -> /var/swap/myswapfile none swap sw 0 0,
+Salve com CTRL+O, depois ENTER, depois CTRL+X.
+
+Comando: free -h ou sudo swapon --show
+Descrição: 07 - confirmar se está funcionando.
+
+Pronto! SWAP criado em uma pasta dedicada.
